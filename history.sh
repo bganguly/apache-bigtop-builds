@@ -21,7 +21,8 @@
   sudo mv jdk1.6.0_31 /usr/lib/jvm
   sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.6.0_31/bin/java" 2
   sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.6.0_31/bin/javac" 2
-  sudo update-alternatives --config java --rem choose the highest possible numeric value, when prompted
+  # choose the highest possible numeric value, when prompted
+  sudo update-alternatives --config java 
   # download and install apache-forrest and mvn 3.0
   sudo wget http://apache.deathculture.net//maven/binaries/apache-maven-3.0.4-bin.tar.gz
   sudo tar -xzvf apache-maven-3.0.4-bin.tar.gz 
@@ -29,12 +30,12 @@
   sudo mv apache-maven-3.0.4 /usr/local/maven-3/
   wget http://archive.apache.org/dist/forrest/0.8/apache-forrest-0.8.tar.gz
   tar -xzvf apache-forrest-0.8.tar.gz 
-  # modify certain lines in the forrest-validate xml, otherwise build fails.
+  # modify certain lines in the forrest-validate xml, otherwise build fails. either sed or nano are fine.
   sed -i 's/property name="forrest.validate.sitemap" value="${forrest.validate}"/property name="forrest.validate.sitemap" value="false"/g' apache-forrest-0.8/main/targets/validate.xml
   sed -i 's/property name="forrest.validate.stylesheets" value="${forrest.validate}"/property name="forrest.validate.stylesheets" value="false"/g' apache-forrest-0.8/main/targets/validate.xml
   sed -i 's/property name="forrest.validate.stylesheets.failonerror" value="${forrest.validate.failonerror}"/property name="forrest.validate.stylesheets.failonerror" value="false"/g' apache-forrest-0.8/main/targets/validate.xml
   sed -i 's/property name="forrest.validate.skins.stylesheets" value="${forrest.validate.skins}"/property name="forrest.validate.skins.stylesheets" value="false"/g' apache-forrest-0.8/main/targets/validate.xml
-  # setup environment variables for use by the build process
+  # setup environment variables for use by the build process. either sed or nano are fine.
   sudo sed -i '1i JAVA_HOME="/usr/lib/jvm/jdk1.6.0_31"' /etc/environment
   sudo sed -i '2i JAVA5_HOME="/usr/lib/jvm/jdk1.6.0_31"' /etc/environment
   sudo sed -i '3i FORREST_HOME="/home/ubuntu/downloads/apache-forrest-0.8"' /etc/environment
