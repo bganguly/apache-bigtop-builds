@@ -1,5 +1,5 @@
   # use CAUTION - script written by ubuntu newbie
-  # script builds required environment for opentop build-from-src on official ubuntu 10.10 64 bit amazon ebs ami
+  # script builds required environment for bigtop build-from-src on official ubuntu 10.10 64 bit amazon ebs ami
   # assumes you are sshing into instance from ubuntu 10.10 desktop
   # while in desktop ubuntu, scp out the /etc/apt/sources list
   scp  -i /host/personal/bikram/openSource/apache_bigtop/aws/ec2/ubuntu_10_04_official/ubuntu_1004_official.pem /etc/apt/sources.list ubuntu@ec2-xxx-xxx-xxx-xxx.us-west-1.compute.amazonaws.com:/home/ubuntu
@@ -44,7 +44,7 @@
   sudo sed -i '6i M3="/usr/local/maven-3/apache-maven-3.0.4/bin"' /etc/environment
   sudo sed -i '/PATH/d' /etc/environment
   sudo sed -i '7i PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/lib/jvm/jdk1.6.0_31:/usr/local/maven-3/apache-maven-3.0.4/bin"' /etc/environment
-  # download opentop src from trunk, taking a minimal set of revisions 
+  # download bigtop src from trunk, taking a minimal set of revisions 
   git svn clone  --no-minimize-url -r 1240010:HEAD https://svn.apache.org/repos/asf/incubator/bigtop/trunk
   # build a few sample packages or use screen if you want to build in parallel
   cd trunk
